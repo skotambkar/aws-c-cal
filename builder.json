@@ -37,7 +37,9 @@
     "test_steps": [
         "test",
         [
-            "{install_dir}/bin/sha256_profile"
+            "{install_dir}/bin/sha256_profile",
+            "{install_dir}/bin/sha1_profile",
+            "{install_dir}/bin/crc32_profile"
         ]
     ]
 }
