@@ -10,13 +10,13 @@ file(GLOB PROFILE_SRC
 set(PROFILE_PROJECT_NAME crc32c_profile)
 add_executable(${PROFILE_PROJECT_NAME} ${PROFILE_SRC})
 aws_set_common_properties(${PROFILE_PROJECT_NAME})
+aws_use_package(aws-checksums)
 
 target_include_directories(${PROFILE_PROJECT_NAME} PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
 
-find_package(aws-checksums REQUIRED)
-target_link_libraries(${PROFILE_PROJECT_NAME} aws-c-cal aws-checksums)
+target_link_libraries(${PROFILE_PROJECT_NAME} PUBLIC ${DEP_AWS_LIBS} aws-c-cal)
 
 if (BUILD_SHARED_LIBS AND NOT WIN32)
     message(INFO " crc32c_profile will be built with shared libs, but you may need to set LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib to run the application")
