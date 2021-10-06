@@ -16,7 +16,7 @@ target_include_directories(${PROFILE_PROJECT_NAME} PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
 
-target_link_libraries(${PROFILE_PROJECT_NAME} PUBLIC ${DEP_AWS_LIBS} aws-c-cal)
+target_link_libraries(${PROFILE_PROJECT_NAME} PUBLIC ${DEP_AWS_LIBS})
 
 if (BUILD_SHARED_LIBS AND NOT WIN32)
     message(INFO " crc32c_profile will be built with shared libs, but you may need to set LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib to run the application")
